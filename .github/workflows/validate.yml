@@ -19,7 +19,7 @@ jobs:
       - name: Check required files
         run: |
           test -d docs
-          test -f "docs/RaceDay.ERD"
+          test -f "docs/RaceDay.ERD.pdf"
           test -f "docs/RaceDay_Database.sql"
           test -f "docs/ST10470323-API Endpoint Plan.pdf"
           test -f README.md
