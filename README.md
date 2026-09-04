@@ -64,7 +64,7 @@ Each endpoint includes the HTTP method, route, description, required role, reque
 
 The complete endpoint plan is available in the `/docs` folder as:
 
-**[Student Number] API Endpoint.pdf**
+**ST10470323-API Endpoint.pdf**
 
 ## SQL Database
 
@@ -103,7 +103,7 @@ RaceDay Event Management System/
 ├── docs/
 │   ├── Race Day ERD.pdf
 │   ├── Race Day_Database.sql
-│   └── [Student Number] API Endpoint.pdf
+│   └── ST10470323-API Endpoint.pdf
 │
 └── README.md
 ```
@@ -117,6 +117,9 @@ The workflow checks that the `/docs` folder and the required Part 1 planning doc
 ### Successful Build
 
 The successful GitHub Actions build screenshot will be added here after the workflow has been created and successfully executed.
+<img width="1366" height="689" alt="Screenshot (37)" src="https://github.com/user-attachments/assets/d8e42139-99c0-444a-ad67-25a45607e9bb" />
+
+
 
 ## Part 1 Demonstration Video
 
