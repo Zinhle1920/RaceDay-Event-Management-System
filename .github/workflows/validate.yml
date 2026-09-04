@@ -1,0 +1,26 @@
+name: Validate RaceDay Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -d docs
+          test -f "docs/Race Day ERD.pdf"
+          test -f "docs/Race Day_Database.sql"
+          test -f "docs/ST10470323 API Endpoint.pdf"
+          test -f README.md
+          echo "All required RaceDay Part 1 files are present."
