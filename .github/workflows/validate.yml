@@ -21,6 +21,6 @@ jobs:
           test -d docs
           test -f "docs/Race Day ERD.pdf"
           test -f "docs/Race Day_Database.sql"
-          test -f "docs/ST10470323 API Endpoint.pdf"
+          test -f "docs/ST10470323-API Endpoint Plan.pdf"
           test -f README.md
           echo "All required RaceDay Part 1 files are present."
