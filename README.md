@@ -232,6 +232,6 @@ The GitHub Actions workflow should restore the project dependencies, build the s
 
 # Video Presentation
 
-## Video link: [Insert the URL of the unlisted YouTube presentation.]
+## Video link: https://www.youtube.com/watch?v=KcVffq3oCl0
 
 The video explains the Part 2 implementation, including the project structure, data models, database, Swagger endpoint groups, authentication design, testing and current implementation status.
