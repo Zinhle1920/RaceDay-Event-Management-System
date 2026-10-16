@@ -145,30 +145,30 @@ https://www.youtube.com/watch?v=Iu5wyQMvVDI
 * Entity Relationship Diagram (ERD)
 
 
-##Part 2- API Development 
-Part 2 — RESTful API Development
+# Part 2- API Development 
+## Part 2 — RESTful API Development
 
-##Overview
+# Overview
 
 Part 2 extends the RaceDay project from the planning and database design completed in Part 1 to the development of an ASP.NET Core RESTful API using C#.
 
-*The API is intended to support user authentication, profile management, race event management, categories, participant enrolments and race results.
+* The API is intended to support user authentication, profile management, race event management, categories, participant enrolments and race results.
 
 Part 1 and Part 2
 Part 1 focused on planning and designing the RaceDay system, including the database design and API endpoint plan.
 Part 2 focuses on implementing the API and its supporting database models, endpoint groups, authentication and role-based access control.
 
-##Technologies and Tools
-*C#
-*ASP.NET Core Web API
-*Visual Studio 2022
-*SQL Server
-*Swagger / OpenAPI
-*Entity Framework Core, where configured in the project
-*Git and GitHub
-*Database
+## Technologies and Tools
+* C#
+* ASP.NET Core Web API
+* Visual Studio 2022
+* SQL Server
+* Swagger / OpenAPI
+* Entity Framework Core, where configured in the project
+* Git and GitHub
+* Database
 
-##The existing database is named RaceDayDb.
+## The existing database is named RaceDayDb.
 
 The database tables currently visible in SQL Server Object Explorer are:
 *Categories
@@ -179,7 +179,7 @@ The database tables currently visible in SQL Server Object Explorer are:
 *User
 *Data Models
 
-The existing Models folder contains:
+## The existing Models folder contains:
 AppUser.cs
 Category.cs
 Enrollment.cs
@@ -187,7 +187,7 @@ EventType.cs
 RaceEvent.cs
 RaceResults.cs
 
-These classes represent the main data entities used by the RaceDay application.
+## These classes represent the main data entities used by the RaceDay application.
 API Endpoint Groups
 The Swagger interface displays the following endpoint groups:
 Auth: Registration, login and logout.
@@ -230,8 +230,8 @@ Automated tests should cover successful operations and failure scenarios, includ
 
 The GitHub Actions workflow should restore the project dependencies, build the solution and run the automated tests.
 
-##Video Presentation
+# Video Presentation
 
-*Video link: [Insert the URL of the unlisted YouTube presentation.]
+## Video link: [Insert the URL of the unlisted YouTube presentation.]
 
 The video explains the Part 2 implementation, including the project structure, data models, database, Swagger endpoint groups, authentication design, testing and current implementation status.
