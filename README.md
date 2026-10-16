@@ -143,3 +143,95 @@ https://www.youtube.com/watch?v=Iu5wyQMvVDI
 * GitHub Actions
 * RESTful API planning
 * Entity Relationship Diagram (ERD)
+
+
+##Part 2- API Development 
+Part 2 — RESTful API Development
+
+##Overview
+
+Part 2 extends the RaceDay project from the planning and database design completed in Part 1 to the development of an ASP.NET Core RESTful API using C#.
+
+*The API is intended to support user authentication, profile management, race event management, categories, participant enrolments and race results.
+
+Part 1 and Part 2
+Part 1 focused on planning and designing the RaceDay system, including the database design and API endpoint plan.
+Part 2 focuses on implementing the API and its supporting database models, endpoint groups, authentication and role-based access control.
+
+##Technologies and Tools
+*C#
+*ASP.NET Core Web API
+*Visual Studio 2022
+*SQL Server
+*Swagger / OpenAPI
+*Entity Framework Core, where configured in the project
+*Git and GitHub
+*Database
+
+##The existing database is named RaceDayDb.
+
+The database tables currently visible in SQL Server Object Explorer are:
+*Categories
+*Enrollment
+*Event
+*EventType
+*Result
+*User
+*Data Models
+
+The existing Models folder contains:
+AppUser.cs
+Category.cs
+Enrollment.cs
+EventType.cs
+RaceEvent.cs
+RaceResults.cs
+
+These classes represent the main data entities used by the RaceDay application.
+API Endpoint Groups
+The Swagger interface displays the following endpoint groups:
+Auth: Registration, login and logout.
+Profile: Viewing and updating a user's profile.
+Events: Browsing and managing race events.
+
+Categories: Managing event categories.
+
+Enrolments: Managing participant entries.
+
+Results: Recording and viewing race results.
+
+The successful operation of each endpoint must be verified through testing.
+
+User Roles
+
+Organiser: Intended to manage their own race events and associated categories, enrolments and results.
+
+Participant: Intended to browse events, enrol in events and view personal race results.
+
+Role-based access control should prevent users from performing operations that are not permitted for their role.
+
+Running and Testing the API
+
+Open the RaceDay solution in Visual Studio 2022.
+
+Select RaceDay.Api as the startup project.
+
+Run the API.
+
+Open the Swagger page provided by the running application.
+
+Test the available endpoints and inspect their responses.
+
+The API's database connection, authentication flows and endpoint functionality must be verified in the local environment.
+
+Unit Testing and CI/CD
+
+Automated tests should cover successful operations and failure scenarios, including authentication, event management, role restrictions and event enrolments.
+
+The GitHub Actions workflow should restore the project dependencies, build the solution and run the automated tests.
+
+##Video Presentation
+
+*Video link: [Insert the URL of the unlisted YouTube presentation.]
+
+The video explains the Part 2 implementation, including the project structure, data models, database, Swagger endpoint groups, authentication design, testing and current implementation status.
