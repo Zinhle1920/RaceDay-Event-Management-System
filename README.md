@@ -146,11 +146,11 @@ https://www.youtube.com/watch?v=Iu5wyQMvVDI
 
 
 # Part 2- API Development 
-## Part 2 — RESTful API Development
+## Part 2 — R API Development
 
 # Overview
 
-Part 2 extends the RaceDay project from the planning and database design completed in Part 1 to the development of an ASP.NET Core RESTful API using C#.
+Part 2 extends the RaceDay project from the planning and database design completed in Part 1 to the development of an ASP.NET Core API using C#.
 
 * The API is intended to support user authentication, profile management, race event management, categories, participant enrolments and race results.
 
