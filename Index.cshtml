@@ -1,61 +1,45 @@
-﻿@model ProfileViewModel
+﻿@model List<ResultViewModel>
 
-@{
-    ViewData["Title"] = "My Profile";
-}
-
-<div class="container mt-4">
-
-    <h2>My Profile</h2>
-
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success">
-            @TempData["SuccessMessage"]
-        </div>
+    @{
+    ViewData["Title"] = "My Results";
     }
 
-    <div class="card p-4">
+    <div class="container mt-4">
 
-        <form asp-action="Index" method="post">
+        <h2>My Race Results</h2>
 
-            <input type="hidden" asp-for="UserId" />
-            <input type="hidden" asp-for="Email" />
-            <input type="hidden" asp-for="Role" />
+        @if (Model.Any())
+        {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Finish Time</th>
+                    <th>Finish Position</th>
+                </tr>
+            </thead>
 
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <tbody>
+                @foreach (var result in Model)
+                {
+                <tr>
+                    <td>@result.EventName</td>
+                    <td>@(result.FinishTime?.ToString() ?? "Not recorded")</td>
+                    <td>@(result.FinishPosition?.ToString() ?? "Not recorded")</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
+        <p>No results are available yet.</p>
+        }
 
-            <div class="mb-3">
-                <label asp-for="FirstName" class="form-label">First Name</label>
-                <input asp-for="FirstName" class="form-control" />
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="LastName" class="form-label">Last Name</label>
-                <input asp-for="LastName" class="form-control" />
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label">Email</label>
-                <input asp-for="Email" class="form-control" readonly />
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Phone" class="form-label">Phone</label>
-                <input asp-for="Phone" class="form-control" />
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Role" class="form-label">Account Role</label>
-                <input asp-for="Role" class="form-control" readonly />
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-                Save Changes
-            </button>
-
-        </form>
+        <a asp-controller="Participant"
+           asp-action="Index"
+           class="btn btn-secondary">
+            Back to Dashboard
+        </a>
 
     </div>
-
-</div>

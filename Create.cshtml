@@ -1,55 +1,49 @@
-﻿@model EventFormViewModel
+﻿@model CreateResultViewModel
 
 @{
-    ViewData["Title"] = "Create Event";
+    ViewData["Title"] = "Record Result";
 }
 
-<h2>Create a Race Event</h2>
+<div class="container mt-4">
 
-<form asp-action="Create" method="post">
+    <h2>Record Race Result</h2>
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="Create" method="post">
 
-    <div class="mb-3">
-        <label asp-for="EventName" class="form-label">Event Name</label>
-        <input asp-for="EventName" class="form-control" />
-    </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="mb-3">
-        <label asp-for="Description" class="form-label">Description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
+        <input type="hidden" asp-for="EnrolmentId" />
 
-    <div class="mb-3">
-        <label asp-for="EventDate" class="form-label">Event Date</label>
-        <input asp-for="EventDate" type="datetime-local" class="form-control" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="FinishTime" class="form-label">
+                Finish Time
+            </label>
+            <input asp-for="FinishTime"
+                   type="time"
+                   step="1"
+                   class="form-control" />
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="Location" class="form-label">Location</label>
-        <input asp-for="Location" class="form-control" />
-    </div>
+        <div class="mb-3">
+            <label asp-for="FinishPosition" class="form-label">
+                Finish Position
+            </label>
+            <input asp-for="FinishPosition"
+                   type="number"
+                   min="1"
+                   class="form-control" />
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="Distance" class="form-label">Distance (km)</label>
-        <input asp-for="Distance" type="number" step="0.1" class="form-control" />
-    </div>
+        <button type="submit" class="btn btn-primary">
+            Save Result
+        </button>
 
-    <div class="mb-3">
-        <label asp-for="EventTypeId" class="form-label">Event Type</label>
-        <select asp-for="EventTypeId" class="form-select">
-            <option value="">Select event type</option>
-            @foreach (var type in Model.EventTypes)
-            {
-                <option value="@type.EventTypeId">@type.TypeName</option>
-            }
-        </select>
-    </div>
+        <a asp-controller="Organiser"
+           asp-action="Index"
+           class="btn btn-secondary">
+            Cancel
+        </a>
 
-    <button type="submit" class="btn btn-primary">Create Event</button>
+    </form>
 
-    <a asp-controller="Organiser" asp-action="Index" class="btn btn-secondary">
-        Cancel
-    </a>
-
-</form>
+</div>
