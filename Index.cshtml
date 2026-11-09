@@ -1,78 +1,45 @@
-﻿@model List<OrganiserEnrolmentViewModel>
+﻿@model RaceDay.Mvc.Models.DashboardViewModel
 
 @{
-    ViewData["Title"] = "Manage Enrolments";
+    ViewData["Title"] = "Participant Dashboard";
 }
 
 <div class="container mt-4">
+    <h2>Welcome, @Model.FirstName!</h2>
+    <p>Discover upcoming races and register for your next challenge.</p>
 
-    <h2>Event Enrolments</h2>
+    <h4 class="mb-3">Available Events</h4>
 
-    @if (Model.Any())
+    @if (!Model.Events.Any())
     {
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Participant</th>
-                    <th>Category</th>
-                    <th>Registration Date</th>
-                    <th>Status</th>
-                    <th>Update Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var enrolment in Model)
-                {
-                    <tr>
-                        <td>@enrolment.ParticipantName</td>
-                        <td>@enrolment.CategoryName</td>
-                        <td>@enrolment.EnrolmentDate.ToString("dd MMM yyyy")</td>
-                        <td>
-                            <span class="badge bg-primary">
-                                @enrolment.Status
-                            </span>
-                        </td>
-                        <td>
-                            <form asp-action="UpdateStatus" method="post">
-
-                                <input type="hidden"
-                                       name="id"
-                                       value="@enrolment.EnrolmentId" />
-
-                                <input type="hidden"
-                                       name="eventId"
-                                       value="@enrolment.EventId" />
-
-                                <select name="status" class="form-select mb-2">
-                                    <option value="Registered">Registered</option>
-                                    <option value="Confirmed">Confirmed</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                    <option value="Completed">Completed</option>
-                                </select>
-
-                                <button type="submit"
-                                        class="btn btn-sm btn-success">
-                                    Update
-                                </button>
-
-                            </form>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="alert alert-info">
+            No events are currently available.
+        </div>
     }
     else
     {
-        <p>No participants have registered for this event yet.</p>
+        <div class="row">
+            @foreach (var item in Model.Events)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5>@item.EventName</h5>
+                            <p>@item.Description</p>
+                            <p><strong>Date:</strong> @item.EventDate.ToShortDateString()</p>
+                            <p><strong>Location:</strong> @item.Location</p>
+                            <p><strong>Distance:</strong> @item.Distance km</p>
+
+                            <a asp-controller="Events"
+                               asp-action="Details"
+                               asp-route-id="@item.EventId"
+                               class="btn btn-primary">
+                                View Event
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     }
-
-    <a asp-controller="Events"
-       asp-action="Details"
-       asp-route-id="@ViewBag.EventId"
-       class="btn btn-secondary">
-        Back to Event
-    </a>
-
 </div>
