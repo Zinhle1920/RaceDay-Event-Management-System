@@ -235,3 +235,103 @@ The GitHub Actions workflow should restore the project dependencies, build the s
 ## Video link: https://www.youtube.com/watch?v=KcVffq3oCl0
 
 The video explains the Part 2 implementation, including the project structure, data models, database, Swagger endpoint groups, authentication design, testing and current implementation status.
+
+# RaceDay PART 3 – Event Management System
+
+## Project Overview
+
+RaceDay is an event management web application developed using ASP.NET Core MVC and ASP.NET Core Web API.
+
+The application is designed to support two main user roles: Organisers and Participants. Organisers can manage events and their related information, while participants can browse available events, enrol in events and view their results.
+
+The project demonstrates the integration of a web-based MVC application with a RESTful API and a database.
+
+## Technologies Used
+
+- C#
+- ASP.NET Core MVC
+- ASP.NET Core Web API
+- .NET 8
+- Entity Framework Core
+- Microsoft SQL Server / LocalDB
+- HTML
+- CSS
+- JavaScript
+- Visual Studio
+- Git and GitHub
+
+## Project Structure
+
+The solution contains two main projects:
+
+### RaceDay.API
+The backend Web API responsible for:
+- User registration and authentication.
+- User profile management.
+- Event management.
+- Event type management.
+- Event category management.
+- Participant enrolments.
+- Enrolment status management.
+- Event results.
+
+### RaceDay.Mvc
+The frontend MVC application responsible for providing the user interface through which organisers and participants interact with the system.
+
+## Main System Features
+
+### Authentication
+- User registration.
+- User login and logout.
+- Role-based user access.
+- Organiser and Participant roles.
+
+### Organiser Functionality
+- Manage events.
+- View events created by the organiser.
+- Manage event categories.
+- View participant enrolments.
+- Update enrolment statuses.
+- Manage event results.
+
+### Participant Functionality
+- Browse available events.
+- View event information.
+- Enrol in events.
+- View personal enrolments.
+- View results.
+
+## Database
+
+The application uses Entity Framework Core to communicate with the SQL Server database.
+
+The API handles database operations and exposes endpoints that the MVC application can consume.
+
+## Running the Application
+
+1. Open the solution in Visual Studio.
+2. Ensure that both `RaceDay.API` and `RaceDay.Mvc` are loaded.
+3. Configure both projects as startup projects.
+4. Set both project actions to Start.
+5. Ensure the database connection string is correctly configured.
+6. Restore NuGet packages.
+7. Build the solution.
+8. Run the application using Ctrl + F5.
+
+The API can also be tested independently through its Swagger interface.
+
+## API Testing
+
+The API exposes endpoints for authentication, profiles, events, categories, enrolments and results.
+
+Swagger is used to inspect and test the available API endpoints.
+
+## Development
+
+This project was developed as part of the RaceDay project assessment, building on the functionality established in the previous project stages.
+
+The solution demonstrates the use of MVC architecture, REST API communication, database integration and role-based application functionality.
+
+##Youtube Link...
+
+
