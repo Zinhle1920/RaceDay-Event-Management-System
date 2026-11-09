@@ -1,45 +1,61 @@
-﻿@model RaceDay.Mvc.Models.DashboardViewModel
+﻿@model ProfileViewModel
 
 @{
-    ViewData["Title"] = "Participant Dashboard";
+    ViewData["Title"] = "My Profile";
 }
 
 <div class="container mt-4">
-    <h2>Welcome, @Model.FirstName!</h2>
-    <p>Discover upcoming races and register for your next challenge.</p>
 
-    <h4 class="mb-3">Available Events</h4>
+    <h2>My Profile</h2>
 
-    @if (!Model.Events.Any())
+    @if (TempData["SuccessMessage"] != null)
     {
-        <div class="alert alert-info">
-            No events are currently available.
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
         </div>
     }
-    else
-    {
-        <div class="row">
-            @foreach (var item in Model.Events)
-            {
-                <div class="col-md-4 mb-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5>@item.EventName</h5>
-                            <p>@item.Description</p>
-                            <p><strong>Date:</strong> @item.EventDate.ToShortDateString()</p>
-                            <p><strong>Location:</strong> @item.Location</p>
-                            <p><strong>Distance:</strong> @item.Distance km</p>
 
-                            <a asp-controller="Events"
-                               asp-action="Details"
-                               asp-route-id="@item.EventId"
-                               class="btn btn-primary">
-                                View Event
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    }
+    <div class="card p-4">
+
+        <form asp-action="Index" method="post">
+
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="Role" />
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label">Phone</label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Role" class="form-label">Account Role</label>
+                <input asp-for="Role" class="form-control" readonly />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Save Changes
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
