@@ -1,0 +1,133 @@
+﻿@model EventViewModel
+
+@{
+    ViewData["Title"] = "Event Details";
+    var categories = ViewBag.Categories as List<CategoryViewModel>;
+    var isOrganiser = Context.Session.GetString("Role") == "Organiser";
+    var isParticipant = Context.Session.GetString("Role") == "Participant";
+}
+
+<div class="container mt-4">
+
+    <h2>@Model.EventName</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>Description:</strong> @Model.Description</p>
+            <p><strong>Date:</strong> @Model.EventDate.ToString("dd MMMM yyyy HH:mm")</p>
+            <p><strong>Location:</strong> @Model.Location</p>
+            <p><strong>Distance:</strong> @Model.Distance km</p>
+            <p><strong>Event Type:</strong> @Model.EventType</p>
+        </div>
+    </div>
+
+    <h4>Event Categories</h4>
+
+    @if (isOrganiser)
+    {
+        <a asp-controller="Categories"
+           asp-action="Create"
+           asp-route-eventId="@Model.EventId"
+           class="btn btn-success mb-3">
+            Add Category
+        </a>
+    }
+
+    @if (categories != null && categories.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Description</th>
+                    @if (isOrganiser)
+                    {
+                        <th>Actions</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in categories)
+                {
+                    <tr>
+                        <td>@category.CategoryName</td>
+                        <td>@category.Description</td>
+
+                        @if (isOrganiser)
+                        {
+                            <td>
+                                <a asp-controller="Categories"
+                                   asp-action="Edit"
+                                   asp-route-id="@category.CategoryId"
+                                   asp-route-eventId="@Model.EventId"
+                                   class="btn btn-sm btn-primary">
+                                    Edit
+                                </a>
+
+                                <form asp-controller="Categories"
+                                      asp-action="Delete"
+                                      asp-route-id="@category.CategoryId"
+                                      asp-route-eventId="@Model.EventId"
+                                      method="post"
+                                      class="d-inline">
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No categories have been added yet.</p>
+    }
+
+    @if (isParticipant && categories != null && categories.Any())
+    {
+        <a asp-controller="Enrolments"
+           asp-action="Create"
+           asp-route-eventId="@Model.EventId"
+           class="btn btn-success">
+            Register for This Event
+        </a>
+    }
+
+    @if (isOrganiser)
+    {
+        <a asp-controller="Events"
+           asp-action="Edit"
+           asp-route-id="@Model.EventId"
+           class="btn btn-primary">
+            Edit Event
+        </a>
+
+        <a asp-controller="OrganiserEnrolments"
+           asp-action="Index"
+           asp-route-eventId="@Model.EventId"
+           class="btn btn-info">
+            Manage Enrolments
+        </a>
+
+        <form asp-controller="Events"
+              asp-action="Delete"
+              asp-route-id="@Model.EventId"
+              method="post"
+              class="d-inline">
+            <button type="submit" class="btn btn-danger">
+                Delete Event
+            </button>
+        </form>
+    }
+
+    <a asp-controller="Organiser"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</div>
