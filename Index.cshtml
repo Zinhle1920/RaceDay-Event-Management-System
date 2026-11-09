@@ -1,51 +1,49 @@
-﻿@model List<ParticipantEnrolmentViewModel>
+﻿@model RaceDay.Mvc.Models.DashboardViewModel
 
 @{
-    ViewData["Title"] = "My Enrolments";
+    ViewData["Title"] = "Organiser Dashboard";
 }
 
 <div class="container mt-4">
+    <h2>Welcome, @Model.FirstName!</h2>
+    <p>Organiser Dashboard</p>
 
-    <h2>My Event Registrations</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>My Events</h4>
+        <a asp-controller="Events" asp-action="Create"
+           class="btn btn-primary">Create Event</a>
+    </div>
 
-    @if (Model.Any())
+    @if (!Model.Events.Any())
     {
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Event</th>
-                    <th>Category</th>
-                    <th>Registration Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.EventName</td>
-                        <td>@item.CategoryName</td>
-                        <td>@item.EnrolmentDate.ToString("dd MMM yyyy")</td>
-                        <td>
-                            <span class="badge bg-primary">
-                                @item.Status
-                            </span>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="alert alert-info">
+            You haven't created any events yet.
+        </div>
     }
     else
     {
-        <p>You have not registered for any events yet.</p>
+        <div class="row">
+            @foreach (var item in Model.Events)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5>@item.EventName</h5>
+                            <p>@item.Description</p>
+                            <p><strong>Date:</strong> @item.EventDate.ToShortDateString()</p>
+                            <p><strong>Location:</strong> @item.Location</p>
+                            <p><strong>Distance:</strong> @item.Distance km</p>
+
+                            <a asp-controller="Events"
+                               asp-action="Details"
+                               asp-route-id="@item.EventId"
+                               class="btn btn-outline-primary">
+                                Manage Event
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     }
-
-    <a asp-controller="Participant"
-       asp-action="Index"
-       class="btn btn-secondary">
-        Back to Dashboard
-    </a>
-
 </div>
